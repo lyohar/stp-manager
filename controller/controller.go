@@ -14,7 +14,7 @@ type about struct {
 }
 
 type Controller struct {
-	repo *repo.PostgresRepo
+	repo repo.Repository
 }
 
 type errorResponse struct {
@@ -26,7 +26,7 @@ func newErrorResponse(c *gin.Context, statusCode int, message string) {
 	c.AbortWithStatusJSON(statusCode, errorResponse{message})
 }
 
-func NewController(r *repo.PostgresRepo) *Controller {
+func NewController(r repo.Repository) *Controller {
 	return &Controller{r}
 }
 
